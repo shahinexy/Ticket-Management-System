@@ -1,15 +1,28 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
+  const {createUser} = useContext(AuthContext)
+
     const { register, handleSubmit } = useForm();
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data) => {
+      console.log(data)
+      createUser(data.email, data.password)
+      .then((res) => {
+        console.log(res.user)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    };
   
   return (
     <div>
       <div className="hero bg-base-200 min-h-screen">
         <div className="hero-content flex-col lg:flex-row">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold text-purple-600">Login now!</h1>
+            <h1 className="text-5xl font-bold text-purple-600">Register now!</h1>
             <p className="py-6">
               Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
