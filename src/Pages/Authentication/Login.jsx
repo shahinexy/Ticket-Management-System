@@ -8,7 +8,7 @@ const Login = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data)
-    signIn(data.email, data.pass)
+    signIn(data.email, data.password)
     .then(res => console.log(res))
     .catch(error => console.log(error))
   };
