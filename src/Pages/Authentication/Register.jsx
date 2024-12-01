@@ -1,16 +1,25 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Provider/AuthProvider";
+import axios from "axios";
 
 const Register = () => {
   const {createUser} = useContext(AuthContext)
 
     const { register, handleSubmit } = useForm();
     const onSubmit = (data) => {
-      console.log(data)
+      console.log('onsubmit',data)
       createUser(data.email, data.password)
       .then((res) => {
-        console.log(res.user)
+        console.log('Auth result', res.user)
+        if(res){
+          const userdata = {userEmail: data.email, userPass: data.password}
+          axios.post(`http://localhost:3000/user`,userdata)
+          .then(res =>{
+            console.log(`Post in mongoDB ${res}`);
+          })
+          .catch(error => console.log(error))
+        }
       })
       .catch((error) => {
         console.log(error)

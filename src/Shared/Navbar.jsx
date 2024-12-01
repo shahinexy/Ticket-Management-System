@@ -25,7 +25,7 @@ const Navbar = () => {
     </NavLink>
         </>
       )
-console.log(User);
+// console.log(User);
     return (
         <div>
             <div className="navbar bg-base-100">
