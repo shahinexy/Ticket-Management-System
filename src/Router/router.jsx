@@ -30,7 +30,7 @@ import UserData from "../Pages/UserDatas/UserData";
             element: <Register></Register>
         },
         {
-          path: '/userdata:id',
+          path: '/userdata/:id',
           element: <UserData></UserData>,
           loader: ({params}) => fetch(`http://localhost:3000/alluser/${params.id}`)
         }

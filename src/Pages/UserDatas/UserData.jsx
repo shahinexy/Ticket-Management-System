@@ -5,7 +5,7 @@ const UserData = () => {
     console.log(data);
     return (
         <div>
-            this is user data pages {data.userEmail}
+            this is user data pages {data?.userEmail}
         </div>
     );
 };
